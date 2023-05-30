@@ -1,16 +1,18 @@
 const express = require('express');
-const {getComidasPepe, getComidas, postComidas, putComidas, deleteComidas} = require('../controllers/comida.controller');
+const {getComidasByID,getComidasByPais, getComidas, postComidas, putComidas, deleteComidas} = require('../controllers/comida.controller');
 
 const comidaRoutes = express.Router();
 
-comidaRoutes.get('/pepe', getComidasPepe)
+comidaRoutes.get('/pais/:pais', getComidasByPais)
+
+comidaRoutes.get('/:id', getComidasByID)
 
 comidaRoutes.get('/', getComidas)
 
 comidaRoutes.post('/', postComidas)
 
-comidaRoutes.put('/', putComidas)
+comidaRoutes.put('/:id', putComidas)
 
-comidaRoutes.delete('/', deleteComidas)
+comidaRoutes.delete('/:id', deleteComidas)
 
 module.exports= comidaRoutes;
